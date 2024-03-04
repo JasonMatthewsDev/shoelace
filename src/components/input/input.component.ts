@@ -250,12 +250,15 @@ export default class SlInput extends ShoelaceElement implements ShoelaceFormCont
     this.emit('sl-change');
   }
 
+  private handleBaseClick() {
+    this.input.focus();
+  }
+
   private handleClearClick(event: MouseEvent) {
     this.value = '';
     this.emit('sl-clear');
     this.emit('sl-input');
     this.emit('sl-change');
-    this.input.focus();
 
     event.stopPropagation();
   }
@@ -437,6 +440,7 @@ export default class SlInput extends ShoelaceElement implements ShoelaceFormCont
         <div part="form-control-input" class="form-control-input">
           <div
             part="base"
+            @click=${this.handleBaseClick}
             class=${classMap({
               input: true,
 
